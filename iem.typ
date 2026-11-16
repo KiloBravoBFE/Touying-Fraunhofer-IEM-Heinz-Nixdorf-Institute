@@ -58,7 +58,7 @@
 #let footer-line(self, hni: none, fraunhofer: none) = {
   let footer-text = {
     set text(size: 12pt, fill: iem-dark)
-
+    h(13pt)
     context utils.slide-counter.display()
     h(10pt)
     text(fill: rgb("#888888"))[|]
