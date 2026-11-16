@@ -1,0 +1,16 @@
+[package]
+name = "touying-fraunhofer_iem-hni"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Kristian Banze"]
+license = "MIT"
+description = "Presentation template for Fraunhofer IEM (HNI / UPB)"
+repository = ""
+keywords = ["Fraunhofer", "HNI", "Heinz Nixdorf", "Nixdorf", "Fraunhofer IEM", "UPB", "Paderborn University", "Universität Paderborn", "Presentation"]
+categories = ["presentation"]
+exclude = ["template/main.pdf"]
+
+[template]
+path = "template/"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"
