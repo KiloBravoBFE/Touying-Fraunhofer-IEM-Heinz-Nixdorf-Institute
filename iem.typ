@@ -55,13 +55,13 @@
   )
 }
 
-#let footer-line(self, hni: none, fraunhofer: none) = {
+#let footer-line(self, hni: none, fraunhofer: none, text-colour: iem-dark) = {
   let footer-text = {
-    set text(size: 12pt, fill: iem-dark)
+    set text(size: 12pt, fill: text-colour)
     h(13pt)
     context utils.slide-counter.display()
     h(10pt)
-    text(fill: rgb("#888888"))[|]
+    text(fill: text-colour)[|]
     h(10pt)
 
     if self.store.footer != none {
@@ -869,6 +869,125 @@
         },
       ),
     ),
+  )
+
+  touying-slide(self: self, body)
+})
+
+
+// ============================================================
+// Idea slide
+// ============================================================
+//
+// #idea-slide(
+//   title: [AN IMPORTANT IDEA],
+//   description: [A short explanation.],
+//   photo: "fibre.png",
+//   icon: "bulb.png",
+//   bar: "green", // or "blue"
+// )
+
+#let idea-slide(
+  title: none,
+  description: none,
+  photo: none,
+  icon: none,
+  bar: "green",
+  overlay: iem-photo-gradient,
+) = touying-slide-wrapper(self => {
+  assert(
+    bar == "green" or bar == "blue",
+    message: "idea-slide: bar must be \"green\" or \"blue\"",
+  )
+
+  let bar-color = if bar == "green" {
+    iem-green
+  } else {
+    iem-blue
+  }
+
+  self = utils.merge-dicts(
+    self,
+    config-page(
+      margin: 0pt,
+      header: none,
+      footer: none,
+    ),
+  )
+
+  let body = block(
+    width: 100%,
+    height: 100%,
+    {
+      grid(
+        columns: (1fr, 2fr),
+        rows: (100%,),
+
+        // left bar
+        rect(
+          width: 100%,
+          height: 100%,
+          fill: bar-color,
+          stroke: none,
+          inset: (
+            left: 32pt,
+            right: 20pt,
+            top: 0pt,
+            bottom: 16pt,
+          ),
+          {
+            if icon != none {
+              place(
+                top + left,
+                dy: 12%,
+                image(icon, width: 45pt),
+              )
+            }
+
+            place(
+              top + left,
+              dy: 42%,
+              block(
+                width: 100%,
+                {
+                  set text(fill: white)
+
+                  if title != none {
+                    block(text(size: 18pt, weight: "bold", title))
+                  }
+
+                  if description != none {
+                    v(8pt)
+                    block(text(size: 16pt, description))
+                  }
+                },
+              ),
+            )
+          },
+        ),
+
+        // content
+        photo-panel(
+          photo: photo,
+          overlay: overlay,
+        ),
+      )
+
+      place(
+        bottom + left,
+        dy: -16pt,
+        block(
+          width: 100%,
+          inset: (left: 32pt, right: 32pt),
+          footer-line(
+            self,
+            hni: self.store.hni-logo-white,
+            fraunhofer: self.store.fraunhofer-logo-white,
+            text-colour: white,
+          ),
+        ),
+      )
+    },
   )
 
   touying-slide(self: self, body)

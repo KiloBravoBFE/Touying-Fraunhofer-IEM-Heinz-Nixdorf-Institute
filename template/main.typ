@@ -1,5 +1,5 @@
 #import "../iem.typ": (
-  cards-slide, closing-slide, contents-slide, iem-theme, slide, snake-slide, subsection-slide, title-slide,
+  cards-slide, closing-slide, contents-slide, idea-slide, iem-theme, slide, snake-slide, subsection-slide, title-slide,
 )
 
 
@@ -138,6 +138,19 @@
       description: [A short description of the fourth topic.],
     ),
   ),
+)
+
+// ------------------------------------------------------------
+// Idea slide
+// ------------------------------------------------------------
+
+
+#idea-slide(
+  title: [AN IMPORTANT IDEA],
+  description: [A short explanation of the idea.],
+  photo: "assets/bg/fibre.png",
+  icon: "assets/bg/bulb.png",
+  bar: "green",
 )
 
 
