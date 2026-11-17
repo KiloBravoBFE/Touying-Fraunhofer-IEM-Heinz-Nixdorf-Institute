@@ -614,6 +614,157 @@
 
 
 // ============================================================
+// Snake slide
+// ============================================================
+//
+// Four items, each with:
+//   photo:       image path, or none
+//   heading:     content
+//   description: content
+
+#let snake-slide(
+  title: none,
+  subtitle: none,
+  items: (),
+  overlay: iem-photo-gradient,
+) = touying-slide-wrapper(self => {
+  assert(
+    items.len() == 4,
+    message: "snake-slide expects exactly four items",
+  )
+
+  self = utils.merge-dicts(
+    self,
+    config-page(
+      margin: 0pt,
+      header: none,
+      footer: none,
+    ),
+  )
+
+  let image-cell(item) = {
+    photo-panel(
+      photo: item.at("photo", default: none),
+      overlay: overlay,
+    )
+  }
+
+  let text-cell(item) = {
+    rect(
+      width: 100%,
+      height: 100%,
+      fill: white,
+      stroke: 0.5pt + rgb("#c8c8c8"),
+      inset: (
+        left: 20pt,
+        right: 18pt,
+        top: 18pt,
+        bottom: 12pt,
+      ),
+      {
+        block(
+          text(
+            size: 18pt,
+            weight: "bold",
+            fill: iem-dark,
+            item.at("heading", default: []),
+          ),
+        )
+
+        v(8pt)
+
+        block(
+          text(
+            size: 16pt,
+            fill: iem-dark,
+            item.at("description", default: []),
+          ),
+        )
+      },
+    )
+  }
+
+  let body = grid(
+    columns: (1fr,),
+    rows: (22%, 68%, 10%),
+
+    // Header
+    block(
+      width: 100%,
+      height: 100%,
+      inset: (
+        left: 32pt,
+        right: 33pt,
+        top: 33pt,
+        bottom: 5pt,
+      ),
+      {
+        if title != none {
+          block(
+            text(
+              size: 21pt,
+              weight: "bold",
+              fill: iem-dark,
+              title,
+            ),
+          )
+        }
+
+        if subtitle != none {
+          v(-6pt)
+          block(
+            text(
+              size: 18pt,
+              weight: "bold",
+              fill: iem-green,
+              subtitle,
+            ),
+          )
+        }
+      },
+    ),
+
+    // images and cells
+    block(
+      width: 100%,
+      height: 100%,
+      grid(
+        columns: (1fr, 1fr, 1fr, 1fr),
+        rows: (50%, 50%),
+
+        image-cell(items.at(0)), text-cell(items.at(0)), image-cell(items.at(1)), text-cell(items.at(1)),
+
+        text-cell(items.at(2)), image-cell(items.at(2)), text-cell(items.at(3)), image-cell(items.at(3)),
+      ),
+    ),
+
+    //
+    block(
+      width: 100%,
+      height: 100%,
+      {
+        place(
+          bottom + left,
+          dy: -16pt,
+          block(
+            width: 100%,
+            inset: (left: 32pt, right: 32pt),
+            footer-line(
+              self,
+              hni: self.store.hni-logo,
+              fraunhofer: self.store.fraunhofer-logo,
+            ),
+          ),
+        )
+      },
+    ),
+  )
+
+  touying-slide(self: self, body)
+})
+
+
+// ============================================================
 // Chapter / subsection title slide
 // ============================================================
 //

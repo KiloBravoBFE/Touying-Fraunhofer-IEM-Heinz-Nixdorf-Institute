@@ -1,4 +1,6 @@
-#import "../iem.typ": cards-slide, closing-slide, contents-slide, iem-theme, slide, subsection-slide, title-slide
+#import "../iem.typ": (
+  cards-slide, closing-slide, contents-slide, iem-theme, slide, snake-slide, subsection-slide, title-slide,
+)
 
 
 // ------------------------------------------------------------
@@ -102,6 +104,38 @@
       photo: "assets/bg/cards3.png",
       number: [03],
       description: [Apply the results in practice.],
+    ),
+  ),
+)
+
+
+// ------------------------------------------------------------
+// Snake slide
+// ------------------------------------------------------------
+
+#snake-slide(
+  title: [Our Approach],
+  subtitle: [Four perspectives],
+  items: (
+    (
+      photo: "assets/bg/snake1.png",
+      heading: [First topic],
+      description: [A short description of the first topic.],
+    ),
+    (
+      photo: "assets/bg/snake2.png",
+      heading: [Second topic],
+      description: [A short description of the second topic.],
+    ),
+    (
+      photo: "assets/bg/snake3.png",
+      heading: [Third topic],
+      description: [A short description of the third topic.],
+    ),
+    (
+      photo: "assets/bg/snake4.png",
+      heading: [Fourth topic],
+      description: [A short description of the fourth topic.],
     ),
   ),
 )
