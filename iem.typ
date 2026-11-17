@@ -360,8 +360,8 @@
       height: 100%,
       inset: (
         left: 32pt,
-        right: 32pt,
-        top: 25pt,
+        right: 33pt,
+        top: 33pt,
         bottom: 5pt,
       ),
       {
@@ -377,7 +377,7 @@
         }
 
         if subtitle != none {
-          v(3pt)
+          v(-6pt)
           block(
             text(
               size: 18pt,
@@ -453,9 +453,9 @@
     width: 100%,
     height: 100%,
     inset: (
-      left: 32pt,
+      left: 33pt,
       right: 32pt,
-      top: 25pt,
+      top: 33pt,
       bottom: 16pt,
     ),
     {
@@ -473,7 +473,7 @@
         }
 
         #if subtitle != none {
-          v(3pt)
+          v(-6pt)
           block(
             width: 100%,
             text(
