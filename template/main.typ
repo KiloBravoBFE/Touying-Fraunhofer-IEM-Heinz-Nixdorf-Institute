@@ -153,6 +153,14 @@
   bar: "green",
 )
 
+#idea-slide(
+  title: [MORE IMPORTANT IDEAS],
+  description: [A short explanation of the idea.],
+  photo: "assets/bg/fibre.png",
+  icon: "assets/bg/bulb.png",
+  bar: "blue",
+)
+
 
 // ------------------------------------------------------------
 // Closing
